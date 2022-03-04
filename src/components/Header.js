@@ -21,11 +21,9 @@ function Header() {
     window.location.reload();
   }
 
-  const signOutButton = <button className='btn btn-danger' type="button" onClick={signOut}>SignOut</button>
-
   return (
     <header className="header d-flex justify-content-around align-items-center">
-      <Menu> 
+      <Menu noOverlay> 
         <a href='#root'>Suas Equipes</a>
         <a href='#root'>Equipes</a>
         <a href='#root'>Scrims</a>
@@ -39,27 +37,7 @@ function Header() {
         style={{ width: "70px" }}
         />
       </div>
-      {signOutButton}
-
-      {/* <button
-        type="button"
-        onClick={() => {
-          console.log(session);
-        }}
-      >
-        Show Session
-      </button>
-      <button
-        type="button"
-        onClick={() => {
-          console.log(user);
-        }}
-      >
-        Show User
-      </button>
-      <button type="button" onClick={handleButton}>
-        button
-      </button> */}
+      <button className='btn btn-danger' type="button" onClick={signOut}>SignOut</button>
     </header>
   );
   

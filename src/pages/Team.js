@@ -103,7 +103,7 @@ function Team() {
   }, [ownerId, setIsOwner, user]);
 
   return (
-    <div>
+    <div style={{minHeight: "2000px"}}>
       <Header />
       <main>
         <Contact discord={discordName} discordId={discordId} discordAvatar={ownerAvatar} />

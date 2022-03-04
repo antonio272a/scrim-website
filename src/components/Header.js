@@ -3,6 +3,7 @@ import context from '../context/MyContext';
 import defaultAvatar from '../images/default-avatar.png';
 import { slide as Menu } from 'react-burger-menu';
 import './css/burgerMenu.css'
+import { Link } from 'react-router-dom';
 
 function Header() {
   const {supabase, user} = useContext(context)
@@ -21,23 +22,47 @@ function Header() {
     window.location.reload();
   }
 
+  const menuHandler = ({ isOpen }) => {
+    const burgerButton = document.querySelector(".bm-burger-button");
+    console.log(burgerButton, isOpen);
+    if (isOpen) {
+      console.log(burgerButton);
+      return burgerButton.classList.add('invisible')
+    } else {
+      return burgerButton.classList.remove('invisible')
+    }
+  }
+
   return (
-    <header className="header d-flex justify-content-around align-items-center">
-      <Menu noOverlay> 
-        <a href='#root'>Suas Equipes</a>
-        <a href='#root'>Equipes</a>
-        <a href='#root'>Scrims</a>
+    <header className="header d-flex justify-content-around align-items-center pt-3">
+      <Menu noOverlay onStateChange={menuHandler}>
+        <div className="d-flex flex-column">
+          <Link className="btn btn-primary my-2" to="/">
+            Suas Equipes
+          </Link>
+          <Link className="btn btn-primary my-2" to="/">
+            Equipes
+          </Link>
+          <Link className="btn btn-primary my-2" to="/">
+            Scrims
+          </Link>
+          <Link className="btn btn-primary my-2" to="/">
+            Perfil
+          </Link>
+        </div>
       </Menu>
 
       <div>
         <img
-        src={userImage || defaultAvatar}
-        alt="user avatar"
-        className="img-fluid img-thumbnail rounded-circle"
-        style={{ width: "70px" }}
+          src={userImage || defaultAvatar}
+          alt="user avatar"
+          className="img-fluid img-thumbnail rounded-circle"
+          style={{ width: "70px" }}
         />
       </div>
-      <button className='btn btn-danger' type="button" onClick={signOut}>SignOut</button>
+      <button className="btn btn-danger" type="button" onClick={signOut}>
+        SignOut
+      </button>
     </header>
   );
   

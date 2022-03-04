@@ -1,23 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { useContext, useEffect } from "react";
+import { Route, Routes } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import CreateTeam from "./pages/CreateTeam";
+import TeamEdit from "./pages/TeamEdit";
+import Login from "./pages/Login";
+import MyContext from "./context/MyContext";
+import supabase from "./supabase/supabaseClient";
+import Teams from "./pages/Teams";
+import Team from "./pages/Team";
 
 function App() {
+  const { session, setSession } = useContext(MyContext);
+  
+  useEffect(() => {
+    setSession(supabase.auth.session());
+    supabase.auth.onAuthStateChange((_event, session) => {
+      setSession(session);
+    });
+  }, [setSession])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {session ? (
+        <Routes>
+          <Route path="/team/:id/edit" element={<TeamEdit />} />
+          <Route path="/team/:id" element={<Team />} />
+          <Route path="/create-team" element={<CreateTeam />} />
+          <Route path="/teams" element={<Teams />} />
+          <Route path="/" element={<Teams />} />
+        </Routes>
+      ) : (
+        <Login />
+      )}
     </div>
   );
 }

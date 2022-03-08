@@ -50,9 +50,6 @@ function CreateTeam() {
       is_recruiting: isRecruiting,
       recruiting_roles: JSON.stringify(availableRoles),
       available_vacancy: Number(availableVacancy),
-      owner_discord: user.identities[0].identity_data.name,
-      owner_discord_id: user.identities[0].identity_data.provider_id,
-      owner_avatar: user.identities[0].identity_data.avatar_url,
     };
     resetErrors();
     

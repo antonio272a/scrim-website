@@ -10,6 +10,7 @@ import TeamPlayers from '../components/teamPresentation/TeamPlayers';
 import TeamAvailableVacancys from '../components/teamPresentation/TeamAvailableVacancys';
 import TeamScrims from '../components/teamPresentation/TeamScrims';
 import TeamLogo from '../components/teamPresentation/TeamLogo';
+import { getUserById } from '../supabase/utils/userUtils';
 
 function Team() {
   const { id } = useParams()
@@ -46,9 +47,6 @@ function Team() {
       is_recruiting,
       recruiting_roles,
       available_vacancy,
-      owner_discord,
-      owner_discord_id,
-      owner_avatar,
     } = team;
 
     const renderLogo = async () => {
@@ -65,9 +63,6 @@ function Team() {
     setIsRecruiting(is_recruiting);
     setAvailableRoles(JSON.parse(recruiting_roles));
     setAvailableVacancy(available_vacancy);
-    setDiscordName(owner_discord);
-    setDiscordId(owner_discord_id);
-    setOwnerAvatar(owner_avatar);
     renderLogo();
     setIsEditing(false);
   };
@@ -91,8 +86,18 @@ function Team() {
       if (!data) return navigate("/not-found");
       memorizedRenderTeam(data);
     };
+
+    const getUser = async () => {
+      if(!ownerId) return
+      const { name, provider_id, avatar_url } = await getUserById(ownerId);
+      setDiscordName(name);
+      setDiscordId(provider_id);
+      setOwnerAvatar(avatar_url);
+    };
+    getUser();
+
     getTeam();
-  }, [id, navigate, memorizedRenderTeam]);
+  }, [id, navigate, memorizedRenderTeam, ownerId]);
   
   useEffect(() => {
     if (!user) return;

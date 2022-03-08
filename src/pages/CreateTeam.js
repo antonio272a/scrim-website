@@ -12,6 +12,8 @@ import RolesSelectInputs from "../components/inputs/RolesSelectInputs";
 import TeamNameInput from "../components/inputs/TeamNameInput";
 import TeamTagInput from "../components/inputs/TeamTagInput";
 import ImageInput from "../components/inputs/ImageInput";
+import { range } from "lodash";
+import { upsertScrim } from "../supabase/utils/scrimTimeUtils";
 
 function CreateTeam() {
   const navigate = useNavigate();
@@ -54,9 +56,45 @@ function CreateTeam() {
     };
     resetErrors();
     
-    const id = await insertTeam("paladins-teams", body, handleDuplicateError);  
+    const id = await insertTeam("paladins_teams", body, handleDuplicateError);  
     if (!id) return
-      
+     
+    const days = [
+      "monday",
+      "tuesday",
+      "wednesday",
+      "thursday",
+      "friday",
+      "saturday",
+      "sunday",
+    ];
+
+    const dayTimes = {};
+
+    days.forEach((day) => {
+      dayTimes[day] = {};
+      range(0, 24).forEach((key) => {
+        dayTimes[day][key] = false;
+      });
+    });
+
+     const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } =
+       dayTimes;
+
+     const timeBody = {
+       team_id: id,
+       owner_id: user.id,
+       monday: JSON.stringify(monday),
+       tuesday: JSON.stringify(tuesday),
+       wednesday: JSON.stringify(wednesday),
+       thursday: JSON.stringify(thursday),
+       friday: JSON.stringify(friday),
+       saturday: JSON.stringify(saturday),
+       sunday: JSON.stringify(sunday),
+     };
+
+    const data = await upsertScrim("paladins_teams_scrims", timeBody);
+    console.log(data);
     await saveLogo();
     navigate(`/team/${id}`)
   }

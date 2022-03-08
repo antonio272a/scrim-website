@@ -1,17 +1,18 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import Header from '../components/Header'
-import ScrimsFilter from '../components/ScrimsFilter';
+import RecruitingFilter from '../components/RecruitingFilter'
 import TeamCard from '../components/TeamCard';
-import { getAllTeamsWithScrim } from '../supabase/utils/scrimTimeUtils';
+import { getAllRecruitingTeams } from "../supabase/utils/teamUtils";
 
-function Scrims() {
+function Recruiting() {
   
   const [FilteredTeams, setFilteredTeams] = useState([]);
   const [teamsReference, setTeamsReference] = useState([]);
-  
+
   useEffect(() => {
     const getTeams = async () => {
-      const data = await getAllTeamsWithScrim("paladins_teams");
+      const data = await getAllRecruitingTeams("paladins_teams");
+      console.log(data);
       setFilteredTeams(data);
       setTeamsReference(data);
     };
@@ -22,11 +23,11 @@ function Scrims() {
   return (
     <div>
       <Header />
-      <main className="container d-flex flex-column text-center mt-5">
+      <main className="container d-flex flex-column text-center mt-3">
         <div className="fw-bolder fs-3 w-100 border border-2 border-dark rounded p-2 ">
-          BUSCAR POR SCRIMS
+          BUSCAR POR VAGAS
         </div>
-        <ScrimsFilter teams={teamsReference} setTeams={setFilteredTeams} />
+        <RecruitingFilter teams={teamsReference} setTeams={setFilteredTeams} />
         <section
           style={{ height: "100vh" }}
           className={`
@@ -49,4 +50,4 @@ function Scrims() {
   );
 }
 
-export default Scrims
+export default Recruiting

@@ -30,6 +30,15 @@ export const updateTeam = async (id, table, body, handleDuplicateError) => {
   }
 };
 
+export const getAllTeams = async (table) => {
+  try {
+    const { data } = await supabase.from(table).select(); 
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getTeamById = async (id, table) => {
   try {
     const { data } = await supabase
@@ -46,4 +55,14 @@ export const getTeamById = async (id, table) => {
 
 export const deleteTeam = async (table, teamId) => {
   await supabase.from(table).delete().match({id: teamId});
+}
+
+export const getAllRecruitingTeams = async (table) => {
+  const { data } = await supabase.from(table).select().eq('is_recruiting', true);
+  return data;
+}
+
+export const getUserTeams = async (table, userId) => {
+  const { data } = await supabase.from(table).select().eq('owner_id', userId);
+  return data;
 }

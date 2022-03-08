@@ -4,10 +4,11 @@ import supabase from '../supabase/supabaseClient';
 function Login() {
   const signInDiscord = async () => {
     try {
-      await supabase.auth.signIn(
+      const data = await supabase.auth.signIn(
         { provider: "discord" },
         { shouldCreateUser: true }
       );
+      console.log(data);
     } catch (error) {
       console.log(error);
     }

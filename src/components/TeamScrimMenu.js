@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import _, { capitalize } from "lodash";
 import PropTypes from 'prop-types';
 import context from '../context/MyContext';
-import { getScrimFromTeam } from '../supabase/utils/scrimTimeUtils';
+import { getScrimFromTeam, upsertScrim } from '../supabase/utils/scrimTimeUtils';
 
 function TeamScrimMenu({ teamId }) {
-  const { supabase, user } = useContext(context);
+  const { user } = useContext(context);
   const [selectedDay, setSelectedDay] = useState(0);
 
   const days = [
@@ -29,7 +29,7 @@ function TeamScrimMenu({ teamId }) {
 
   useEffect(() => {
     const getTeamHours = async () => {
-      const data = await getScrimFromTeam("paladins-teams-scrims", teamId);
+      const data = await getScrimFromTeam("paladins_teams_scrims", teamId);
       if (!data) return;
       const { monday, tuesday, wednesday, thursday, friday, saturday, sunday } = data;
       setDayTimes({
@@ -46,7 +46,7 @@ function TeamScrimMenu({ teamId }) {
     };
 
     getTeamHours();
-  }, [teamId, supabase, setDayTimes, user]);
+  }, [teamId, setDayTimes, user]);
 
   const times = _.range(0,24);
 
@@ -113,9 +113,8 @@ function TeamScrimMenu({ teamId }) {
     
     const {monday, tuesday, wednesday, thursday, friday, saturday, sunday } = dayTimes;
     
-    const result = await supabase.from('paladins-teams-scrims')
-    .upsert([({
-      team_id: teamId, 
+    const body = {
+      team_id: teamId,
       owner_id: user.id,
       monday: JSON.stringify(monday),
       tuesday: JSON.stringify(tuesday),
@@ -124,8 +123,10 @@ function TeamScrimMenu({ teamId }) {
       friday: JSON.stringify(friday),
       saturday: JSON.stringify(saturday),
       sunday: JSON.stringify(sunday),
-    })], { onConflict: 'team_id' })
-    console.log(result);
+    };
+
+    await upsertScrim("paladins_teams_scrims", body);
+
     window.location.reload();
   } 
 

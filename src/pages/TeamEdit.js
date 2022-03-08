@@ -96,7 +96,7 @@ function CreateTeam() {
 
   useEffect(() => {
     const getTeam = async () => {
-      const data = await getTeamById(id, "paladins-teams");
+      const data = await getTeamById(id, "paladins_teams");
       if (!data) return navigate("/not-found");
       memorizedRenderTeam(data);
     };
@@ -130,7 +130,7 @@ function CreateTeam() {
     };
     resetErrors();
     
-    const data = await updateTeam(id, 'paladins-teams', body, handleDuplicateError);
+    const data = await updateTeam(id, 'paladins_teams', body, handleDuplicateError);
     if (!data) return;
 
     if (oldName !== teamName && hasAvatar) {

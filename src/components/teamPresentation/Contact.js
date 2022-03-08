@@ -1,10 +1,8 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
-import defaultAvatar from '../images/default-avatar.png'
-import context from '../context/MyContext';
+import defaultAvatar from '../../images/default-avatar.png'
 
 function Contact({ discord, discordId, discordAvatar }) {
-  const { TeamName } = useContext(context);
   
   return (
     <section className="d-flex align-items-center justify-content-around mt-5 py-2 bg-light">
@@ -16,6 +14,7 @@ function Contact({ discord, discordId, discordAvatar }) {
         <a
           className=" mx-2 nav-link active"
           href={`https://discordapp.com/users/${discordId}/`}
+          target="_blank" rel="noreferrer"
         >
           Entrar em contato
         </a>

@@ -24,27 +24,25 @@ function Header() {
 
   const menuHandler = ({ isOpen }) => {
     const burgerButton = document.querySelector(".bm-burger-button");
-    console.log(burgerButton, isOpen);
+
     if (isOpen) {
-      console.log(burgerButton);
       return burgerButton.classList.add('invisible')
-    } else {
-      return burgerButton.classList.remove('invisible')
     }
+    return burgerButton.classList.remove('invisible')
   }
 
   return (
     <header className="header d-flex justify-content-around align-items-center pt-3">
       <Menu noOverlay onStateChange={menuHandler}>
         <div className="d-flex flex-column">
-          <Link className="btn btn-primary my-2" to="/">
-            Suas Equipes
-          </Link>
-          <Link className="btn btn-primary my-2" to="/">
+          <Link className="btn btn-primary my-2" to="/teams">
             Equipes
           </Link>
           <Link className="btn btn-primary my-2" to="/">
             Scrims
+          </Link>
+          <Link className="btn btn-primary my-2" to="/">
+            Suas Equipes
           </Link>
           <Link className="btn btn-primary my-2" to="/">
             Perfil

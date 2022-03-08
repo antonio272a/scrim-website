@@ -1,29 +1,27 @@
 import React, { useContext, useEffect, useCallback, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom';
-import Contact from '../components/Contact';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import Contact from '../components/teamPresentation/Contact';
 import Header from '../components/Header';
 import context from '../context/MyContext';
 import { getTeamLogo } from '../supabase/utils/logoUtils';
 import { getTeamById } from '../supabase/utils/teamUtils';
+import TeamName from '../components/teamPresentation/TeamName';
+import TeamPlayers from '../components/teamPresentation/TeamPlayers';
+import TeamAvailableVacancys from '../components/teamPresentation/TeamAvailableVacancys';
+import TeamScrims from '../components/teamPresentation/TeamScrims';
+import TeamLogo from '../components/teamPresentation/TeamLogo';
 
 function Team() {
-  const {id} = useParams()
+  const { id } = useParams()
   const navigate = useNavigate();
   const {
     user,
-    playerInputs,
     setPlayerInputs,
-    teamName,
     setTeamName,
-    teamAcronym,
     setTeamAcronym,
-    isRecruiting,
     setIsRecruiting,
-    availableRoles,
     setAvailableRoles,
-    availableVacancy,
     setAvailableVacancy,
-    hasAvatar,
     setHasAvatar,
     setLogoUrl,
     setIsOwner,
@@ -89,7 +87,7 @@ function Team() {
 
   useEffect(() => {
     const getTeam = async () => {
-      const data = await getTeamById(id, "paladins-teams");
+      const data = await getTeamById(id, "paladins_teams");
       if (!data) return navigate("/not-found");
       memorizedRenderTeam(data);
     };
@@ -105,8 +103,21 @@ function Team() {
   return (
     <div style={{minHeight: "2000px"}}>
       <Header />
-      <main>
+      <main className="d-flex flex-column">
         <Contact discord={discordName} discordId={discordId} discordAvatar={ownerAvatar} />
+        <TeamLogo />
+        {isOwner && (
+        <div className='mt-3 align-self-center'>
+          <Link to={`/team/${id}/edit`} className='btn btn-primary'>Editar Time</Link>
+        </div>
+        )}
+        <TeamName />
+        <hr className="w-100 border-top border-dark border-3" />
+        <TeamPlayers playerType='main' playerNumbers={5} />
+        <TeamPlayers playerType='subs' playerNumbers={3} />
+        <TeamAvailableVacancys />
+        <hr className="w-100 border-top border-dark border-3" />
+        <TeamScrims />
       </main>
     </div>
   )

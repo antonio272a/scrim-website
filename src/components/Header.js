@@ -55,7 +55,7 @@ function Header() {
           src={userImage || defaultAvatar}
           alt="user avatar"
           className="img-fluid img-thumbnail rounded-circle"
-          style={{ width: "70px" }}
+          style={{ width: "70px"}}
         />
       </div>
       <button className="btn btn-danger" type="button" onClick={signOut}>

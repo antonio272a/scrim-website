@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom'
 import { getTeamLogo } from '../supabase/utils/logoUtils';
 import defaultLogo from '../images/default-avatar.png';
+import './css/teamCard.css';
 
-function TeamCard({ teamId, teamName, ownerId }) {
+function TeamCard({ teamId, teamName, ownerId, isLink }) {
   
   const [logoUrl, setLogoUrl] = useState('');
 
@@ -15,21 +17,34 @@ function TeamCard({ teamId, teamName, ownerId }) {
     getLogo();
   }, [ownerId, teamName]);
 
-  return (
-    <Link
-      to={`/team/${teamId}`}
-      className="text-center border border-secondary border-3 m-3 rounded"
+  const card = (
+    <div
+      className="d-flex flex-column align-items-center justify-content-start"
+      style={{ position: "relative" }}
     >
-      <div className='d-flex flex-column align-items-center justify-content-start' style={{ position: 'relative' }}>
-        <img
-          width="150px"
-          src={logoUrl || defaultLogo}
-          alt="Team Logo"
-        />
-        <span style={{ position: 'absolute', bottom: "0px", color: 'black', height: 'auto' }} className="mt-1">{teamName}</span>
-      </div>
-    </Link>
+      <img width="150px" src={logoUrl || defaultLogo} alt="Team Logo" />
+      <span className="mt-1 teamName">{teamName}</span>
+    </div>
+  );
+
+  return (
+    <div style={{display: 'inline-block'}} className="text-center border border-secondary border-3 m-3 rounded">
+      {isLink ? (<Link to={`/team/${teamId}`}>{card}</Link>) : (
+        <div>{card}</div>
+      )}
+    </div>
   );
 }
+
+TeamCard.propTypes = {
+  teamId: PropTypes.number.isRequired,
+  teamName: PropTypes.string.isRequired,
+  ownerId: PropTypes.string.isRequired,
+  isLink: PropTypes.bool,
+};
+
+TeamCard.defaultProps = {
+  isLink: true
+};
 
 export default TeamCard

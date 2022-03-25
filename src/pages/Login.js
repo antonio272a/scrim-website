@@ -8,14 +8,13 @@ function Login() {
         { provider: "discord" },
         { shouldCreateUser: true }
       );
-      console.log(data);
     } catch (error) {
       console.log(error);
     }
   };
 
   const signInButton = (
-    <button type="button" onClick={signInDiscord}>
+    <button type="button" onClick={ signInDiscord }>
       Login
     </button>
   );

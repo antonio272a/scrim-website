@@ -9,10 +9,12 @@ function Header() {
   const {supabase, user} = useContext(context)
   const [userImage, setUserImage] = useState();
   
+  const userId = user ? user.id : '';
 
   useEffect(() => {
     try {
       setUserImage(user.identities[0].identity_data.avatar_url)
+
     } catch (error) {
     }
   }, [user]);
@@ -36,16 +38,19 @@ function Header() {
       <Menu noOverlay onStateChange={menuHandler}>
         <div className="d-flex flex-column">
           <Link className="btn btn-primary my-2" to="/teams">
-            Equipes
+            Teams
           </Link>
-          <Link className="btn btn-primary my-2" to="/">
+          <Link className="btn btn-primary my-2" to="/scrims">
             Scrims
           </Link>
-          <Link className="btn btn-primary my-2" to="/">
-            Suas Equipes
+          <Link className="btn btn-primary my-2" to="/recruit">
+            Find Teams
           </Link>
-          <Link className="btn btn-primary my-2" to="/">
-            Perfil
+          <Link className="btn btn-primary my-2" to={`/profile/${userId}`}>
+            Your Teams
+          </Link>
+          <Link className="btn btn-primary my-2" to={`/profile/${userId}`}>
+            Profile
           </Link>
         </div>
       </Menu>
@@ -55,7 +60,7 @@ function Header() {
           src={userImage || defaultAvatar}
           alt="user avatar"
           className="img-fluid img-thumbnail rounded-circle"
-          style={{ width: "70px"}}
+          style={{ width: "70px" }}
         />
       </div>
       <button className="btn btn-danger" type="button" onClick={signOut}>

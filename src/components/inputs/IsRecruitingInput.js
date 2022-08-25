@@ -25,7 +25,7 @@ function IsRecruitingInput() {
           }
         }}
       />
-      <label className="form-check-label">Recrutando?</label>
+      <label className="form-check-label">Recruiting?</label>
     </div>
   );
 }

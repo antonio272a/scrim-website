@@ -6,7 +6,7 @@ function UserContacts({ userContacts }) {
 
   return (
     <section className="align-self-center">
-      <div className="fs-2 fw-bolder text-center my-2">Contatos:</div>
+      <div className="fs-2 fw-bolder text-center my-2">Contacts:</div>
       <div>
         {userContacts.map(({ provider, contact }, index) => (
           <div key={`contact-${provider}-${index}`}>

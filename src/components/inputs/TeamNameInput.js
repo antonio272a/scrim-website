@@ -28,7 +28,7 @@ function TeamNameInput () {
         className="invalid-feedback"
         style={{ display: "none" }}
       >
-        Nome já existente
+        Name already taken!
       </span>
     </div>
   );

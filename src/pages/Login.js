@@ -1,10 +1,11 @@
 import React from 'react'
 import supabase from '../supabase/supabaseClient';
+import './css/login.css';
 
 function Login() {
   const signInDiscord = async () => {
     try {
-      const data = await supabase.auth.signIn(
+      await supabase.auth.signIn(
         { provider: "discord" },
         { shouldCreateUser: true }
       );
@@ -13,13 +14,18 @@ function Login() {
     }
   };
 
-  const signInButton = (
-    <button type="button" onClick={ signInDiscord }>
-      Login
-    </button>
-  );
 
-  return <div>{signInButton}</div>
+  return (
+    <div className='login-bg'>
+      <button 
+        className='btn btn-light btn-lg login-btn' 
+        type="button" 
+        onClick={ signInDiscord }
+      >
+        Login
+      </button>
+    </div>
+  );
 }
 
 export default Login;

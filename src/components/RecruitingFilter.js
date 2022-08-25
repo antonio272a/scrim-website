@@ -51,10 +51,10 @@ function RecruitingFilter({setTeams, teams}) {
   }, [selectedRoles, selectedVacancy, setTeams, teams])
 
   return (
-    <section className='d-flex mt-5 align-items-center text-center'>
+    <section className="d-flex mt-5 align-items-center text-center">
       <div className="w-50 mx-1">
         <label htmlFor="days-select" className="fw-bold fs-4 mb-2">
-          Filtrar por quantidade de vagas
+          Filter by number of vacancies
         </label>
         <Select
           className={"w-100"}
@@ -69,7 +69,7 @@ function RecruitingFilter({setTeams, teams}) {
       </div>
       <div className="w-50 mx-1">
         <label htmlFor="hours-select" className="fw-bold fs-4 mb-2">
-          Filtrar por Roles
+          Filter by Role
         </label>
         <Select
           className={"w-100"}

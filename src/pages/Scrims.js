@@ -24,7 +24,7 @@ function Scrims() {
       <Header />
       <main className="container d-flex flex-column text-center mt-5">
         <div className="fw-bolder fs-3 w-100 border border-2 border-dark rounded p-2 ">
-          BUSCAR POR SCRIMS
+          SEARCH FOR SCRIMS
         </div>
         <ScrimsFilter teams={teamsReference} setTeams={setFilteredTeams} />
         <section

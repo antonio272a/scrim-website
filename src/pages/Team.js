@@ -113,7 +113,7 @@ function Team() {
         <TeamLogo />
         {isOwner && (
         <div className='mt-3 align-self-center'>
-          <Link to={`/team/${id}/edit`} className='btn btn-primary'>Editar Time</Link>
+          <Link to={`/team/${id}/edit`} className='btn btn-primary'>Edit Team</Link>
         </div>
         )}
         <TeamName />

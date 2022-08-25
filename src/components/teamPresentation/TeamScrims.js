@@ -119,7 +119,7 @@ function TeamScrims() {
 
   return (
     <section className="my-3 d-flex flex-column align-items-center container">
-      <div className="mb-4 fs-3">Horários de Scrim:</div>
+      <div className="mb-4 fs-3">Scrim hours:</div>
       <div className="d-flex justify-content-center">{daysButtons}</div>
       {daysAvailableTimes[selectedDay]}
     </section>

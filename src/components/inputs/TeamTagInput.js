@@ -29,7 +29,7 @@ function TeamTagInput() {
         className="invalid-feedback"
         style={{ display: "none" }}
       >
-        Tag já existente
+        Tag already taken
       </span>
     </div>
   );

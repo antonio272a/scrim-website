@@ -66,7 +66,7 @@ function ScrimsFilter({ setTeams, teams }) {
     <section className="d-flex mt-5 align-items-center text-center">
       <div className="w-50 mx-1">
         <label htmlFor="days-select" className="fw-bold fs-4 mb-2">
-          Filtrar por dia
+          Filter by day
         </label>
         <Select
           className={"w-100"}
@@ -81,7 +81,7 @@ function ScrimsFilter({ setTeams, teams }) {
       </div>
       <div className="w-50 x-1">
         <label htmlFor="hours-select" className="fw-bold fs-4 mb-2">
-          Filtrar por horário
+          Filter by hour
         </label>
         <Select
           className={"w-100"}

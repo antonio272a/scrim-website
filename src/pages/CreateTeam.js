@@ -93,7 +93,7 @@ function CreateTeam() {
     const data = await upsertScrim("paladins_teams_scrims", timeBody);
     console.log(data);
     await saveLogo();
-    navigate(`/team/${id}`)
+    navigate(`/team/${id}`);
   }
 
   return (

@@ -14,7 +14,7 @@ function RolesSelectInputs({ roles }) {
 
   return (
     <div className="d-flex flex-column align-items-center">
-      <label htmlFor="roles-select">Roles Disponíveis</label>
+      <label htmlFor="roles-select">Available Roles</label>
       <Select
         id="roles-select"
         width="100px"

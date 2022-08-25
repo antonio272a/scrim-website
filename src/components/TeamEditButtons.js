@@ -37,14 +37,14 @@ function TeamEditButtons() {
   const saveAndCancelButtons = (
     <div className="d-flex justify-content-around w-50">
           <button type="button" className="btn btn-lg btn-success" onClick={() => { setIsOpenSave(true) }}>
-            Salvar
+            Save
           </button>
           <button
             type="button"
             className="btn btn-danger btn-lg"
             onClick={handleCancelButton}
           >
-            Cancelar
+            Cancel
           </button>
         </div>
   );
@@ -56,38 +56,37 @@ function TeamEditButtons() {
             className="btn btn-primary btn-lg"
             onClick={handleEditButton}
           >
-            Editar
+            Edit
           </button>
           <button
             type="button"
             className="btn btn-danger btn-lg"
             onClick={() => {setIsOpenDelete(true)}}
           >
-            Deletar
+            Delete
           </button>
         </div>
   )
 
   const modalDeleteHeader = (
-    <div>
-      Você deseja deletar o time {teamName}?
-    </div>
-  )
+    <div>Do you want to delete the team {teamName}?</div>
+  );
 
   const modalDeleteCotent = (
     <div className="d-flex justify-content-around w-100">
       <button type="button" className="btn btn-success" onClick={handleDeleteButton}>
-        Confirmar
+        Confirm
       </button>
       <button type="button" className="btn btn-danger" onClick={() => {setIsOpenDelete(false)}}>
-        Cancelar
+        Cancel
       </button>
     </div>
   );
 
   const modalSaveHeader = (
     <div>
-      <strong>Observação:</strong> A mudança de logo do time pode demorar até alguns minutos para surtir efeito
+      <strong>Note:</strong> The team logo change may take up to a few minutes
+      to take effect
     </div>
   );
 

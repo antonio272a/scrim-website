@@ -6,7 +6,7 @@ import UserContactsEdit from '../components/userPresentation/UserContactsEdit';
 import UserInfo from '../components/userPresentation/UserInfo';
 import UserTeams from '../components/userPresentation/UserTeams';
 import context from '../context/MyContext';
-import { getUserById, getUserContacts } from '../supabase/utils/userUtils';
+import { getUserById, getUserContacts, upsertUserContacts } from '../supabase/utils/userUtils';
 
 
 function Profile() {
@@ -45,9 +45,11 @@ function Profile() {
     setIsUser(userId === user.id);
   }, [user, userId]);
 
-  const cancelEdit = () => {
-    setUserContacts(userContactsReference);
+  const finishEdit = async (cancel) => {
     setIsEditing(false);
+    if(cancel) return setUserContacts(userContactsReference);
+
+    console.log(await upsertUserContacts(userId, userContacts))
   }
 
   return (
@@ -57,7 +59,7 @@ function Profile() {
         <UserInfo user={pagedUser} />
         <hr className="w-100 border-top border-dark border-3" />
         {isEditing ? (
-          <UserContactsEdit userContacts={userContacts} setUserContacts={setUserContacts} cancelEdit={cancelEdit} />
+          <UserContactsEdit userContacts={userContacts} setUserContacts={setUserContacts} finishEdit={finishEdit} />
         ) : (
           <UserContacts userContacts={userContacts} />
         )}
@@ -67,7 +69,7 @@ function Profile() {
             onClick={() => setIsEditing(true)}
             className="btn btn-primary mt-4"
           >
-            Editar Contatos
+            Edit Contacts
           </button>
         )}
         <hr className="w-100 border-top border-dark border-3" />

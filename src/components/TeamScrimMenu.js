@@ -157,7 +157,7 @@ function TeamScrimMenu({ teamId }) {
         onClick={saveHours}
         className="btn btn-success mt-4 btn-lg"
       >
-        Salvar
+        Save
       </button>
     </form>
   );

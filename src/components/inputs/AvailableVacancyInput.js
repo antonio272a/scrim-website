@@ -20,7 +20,7 @@ function AvailableVacancyInput() {
   return (
     <div className="d-flex flex-column align-items-center">
       <label htmlFor="avaliable-vacancy" className="form-label">
-        Vagas Disponíveis
+        Available vacancies
       </label>
       <select
         id="avaliable-vacancy"

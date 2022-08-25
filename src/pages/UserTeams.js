@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
+import { Link } from 'react-router-dom';
 import Header from '../components/Header'
 import TeamCard from '../components/TeamCard'
 import context from '../context/MyContext';
@@ -19,10 +20,11 @@ function UserTeams() {
   }, [user.id])
 
   return (
-    <div className='d-flex flex-column'>
+    <div className="d-flex flex-column">
       <Header />
-      <section className="fw-bolder container fs-3 w-100 border border-2 border-dark rounded p-2 text-center mt-3">
-        Suas Equipes
+      <section className="position-relative align-items-center d-flex justify-content-center container fs-3 w-100 border border-2 border-dark rounded p-2 text-center mt-3">
+        <p className="fw-bolder m-0">Your Teams</p>
+        <Link className='position-absolute mx-3 btn btn-primary' style={{right: "0px", top:"50%", transform: "translateY(-50%)"}} to="/create-team">Create New Team</Link>
       </section>
       <section
         style={{ height: "100vh" }}

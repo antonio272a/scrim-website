@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
-import _ from 'lodash';
+  import _ from 'lodash';
 import context from '../../context/MyContext';
 import PropTypes from 'prop-types';
 
-function PlayerInputs({numberOfInputs, playerType, roles }) {
+function PlayerInputs({ numberOfInputs, playerType, roles }) {
   const inputs = _.range(1, numberOfInputs + 1)
 
   const { playerInputs, setPlayerInputs, isEditing } = useContext(context);
@@ -34,7 +34,7 @@ function PlayerInputs({numberOfInputs, playerType, roles }) {
               disabled={!isEditing}
             />
             <label htmlFor={`${playerType}Name${playerNumber}`}>
-              Titular {playerNumber}
+              Player {playerNumber}
             </label>
           </div>
           <div>

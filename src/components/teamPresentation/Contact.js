@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import defaultAvatar from '../../images/default-avatar.png'
+import { Link } from 'react-router-dom';
 
-function Contact({ discord, discordId, discordAvatar }) {
+function Contact({ discord, ownerId, discordAvatar }) {
   
   return (
     <section className="d-flex align-items-center justify-content-around mt-5 py-2 bg-light">
@@ -18,14 +19,9 @@ function Contact({ discord, discordId, discordAvatar }) {
         </span>
       </div>
       <div className="nav nav-pills">
-        <a
-          className=" mx-2 nav-link active"
-          href={`https://discordapp.com/users/${discordId}/`}
-          target="_blank"
-          rel="noreferrer"
-        >
+        <Link className=" mx-2 nav-link active" to={`profile/${ownerId}`}>
           Get in touch
-        </a>
+        </Link>
       </div>
     </section>
   );

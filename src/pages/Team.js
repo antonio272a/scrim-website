@@ -106,26 +106,32 @@ function Team() {
   }, [ownerId, setIsOwner, user]);
 
   return (
-    <div style={{minHeight: "2000px"}}>
+    <div style={{ minHeight: "2000px" }}>
       <Header />
       <main className="d-flex flex-column">
-        <Contact discord={discordName} discordId={discordId} discordAvatar={ownerAvatar} />
+        <Contact
+          discord={discordName}
+          ownerId={ownerId}
+          discordAvatar={ownerAvatar}
+        />
         <TeamLogo />
         {isOwner && (
-        <div className='mt-3 align-self-center'>
-          <Link to={`/team/${id}/edit`} className='btn btn-primary'>Edit Team</Link>
-        </div>
+          <div className="mt-3 align-self-center">
+            <Link to={`/team/${id}/edit`} className="btn btn-primary">
+              Edit Team
+            </Link>
+          </div>
         )}
         <TeamName />
         <hr className="w-100 border-top border-dark border-3" />
-        <TeamPlayers playerType='main' playerNumbers={5} />
-        <TeamPlayers playerType='subs' playerNumbers={3} />
+        <TeamPlayers playerType="main" playerNumbers={5} />
+        <TeamPlayers playerType="subs" playerNumbers={3} />
         <TeamAvailableVacancys />
         <hr className="w-100 border-top border-dark border-3" />
         <TeamScrims />
       </main>
     </div>
-  )
+  );
 }
 
 export default Team

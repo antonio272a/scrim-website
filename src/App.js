@@ -34,8 +34,8 @@ function App() {
           <Route path="/teams" element={<Teams />} />
           <Route path="/scrims" element={<Scrims />} />
           <Route path="/recruit" element={<Recruiting />} />
-          <Route path="user-teams" element={<UserTeams />} />
-          <Route path="profile/:userId" element={<Profile />} />
+          <Route path="/user-teams" element={<UserTeams />} />
+          <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/not-found" element={<NotFound />} />
           <Route path="/" element={<Teams />} />
           <Route path="*" element={<NotFound />} />

@@ -46,7 +46,7 @@ function Header() {
           <Link className="btn btn-primary my-2" to="/recruit">
             Find Teams
           </Link>
-          <Link className="btn btn-primary my-2" to={`/profile/${userId}`}>
+          <Link className="btn btn-primary my-2" to={`/user-teams`}>
             Your Teams
           </Link>
           <Link className="btn btn-primary my-2" to={`/profile/${userId}`}>

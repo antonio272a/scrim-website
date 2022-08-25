@@ -19,7 +19,7 @@ function Contact({ discord, ownerId, discordAvatar }) {
         </span>
       </div>
       <div className="nav nav-pills">
-        <Link className=" mx-2 nav-link active" to={`profile/${ownerId}`}>
+        <Link className=" mx-2 nav-link active" to={`/profile/${ownerId}`}>
           Get in touch
         </Link>
       </div>

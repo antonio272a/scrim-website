@@ -8,13 +8,13 @@ function ScrimsFilter({ setTeams, teams }) {
   const [selectedHours, setSelectedHours] = useState([]);
 
   const daysSelectOptions = [
-    { label: "Segunda", value: "monday" },
-    { label: "Terça", value: "tuesday" },
-    { label: "Quarta", value: "wednesday" },
-    { label: "Quinta", value: "thursday" },
-    { label: "Sexta", value: "friday" },
-    { label: "Sábado", value: "saturday" },
-    { label: "Domingo", value: "sunday" },
+    { label: "Monday", value: "monday" },
+    { label: "Tuesday", value: "tuesday" },
+    { label: "Wednesday", value: "wednesday" },
+    { label: "Thursday", value: "thursday" },
+    { label: "Friday", value: "friday" },
+    { label: "Saturday", value: "saturday" },
+    { label: "Sunday", value: "sunday" },
   ];
 
   const hoursSelectOptions = range(0, 24).map((hour) => ({
@@ -81,7 +81,7 @@ function ScrimsFilter({ setTeams, teams }) {
       </div>
       <div className="w-50 x-1">
         <label htmlFor="hours-select" className="fw-bold fs-4 mb-2">
-          Filter by hour
+          Filter by hour (Time Zone: -3GMT)
         </label>
         <Select
           className={"w-100"}

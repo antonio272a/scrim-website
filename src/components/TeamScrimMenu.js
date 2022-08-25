@@ -148,6 +148,7 @@ function TeamScrimMenu({ teamId }) {
 
   return (
     <form className="mt-4 d-flex flex-column container align-items-center">
+      <h3 className='mb-3'>Time Zone: -3GMT</h3>
       <section className="container d-flex justify-content-around w-50">
         {daysButtons}
       </section>

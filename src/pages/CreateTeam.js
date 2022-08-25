@@ -121,7 +121,7 @@ function CreateTeam() {
               <RolesSelectInputs roles={roles} />
             </div>
           </section>
-          <button type="submit" className="btn btn-success btn-lg">Criar</button>
+          <button type="submit" className="btn btn-success btn-lg">Save</button>
         </form>
       </div>
     </div>

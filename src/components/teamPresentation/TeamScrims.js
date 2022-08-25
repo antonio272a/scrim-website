@@ -120,6 +120,7 @@ function TeamScrims() {
   return (
     <section className="my-3 d-flex flex-column align-items-center container">
       <div className="mb-4 fs-3">Scrim hours:</div>
+      <h5 className="mb-3">Time Zone: -3GMT</h5>
       <div className="d-flex justify-content-center">{daysButtons}</div>
       {daysAvailableTimes[selectedDay]}
     </section>

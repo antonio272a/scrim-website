@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from "react";
 import Header from "../components/Header";
 import context from "../context/MyContext";
 import { useNavigate } from "react-router-dom";
@@ -14,6 +14,7 @@ import TeamTagInput from "../components/inputs/TeamTagInput";
 import ImageInput from "../components/inputs/ImageInput";
 import { range } from "lodash";
 import { upsertScrim } from "../supabase/utils/scrimTimeUtils";
+import CreateTeamText from '../translations/pages/CreateTeam.json';
 
 function CreateTeam() {
   const navigate = useNavigate();
@@ -27,12 +28,16 @@ function CreateTeam() {
     availableVacancy,
     logoImg,
     setIsEditing,
+    language
   } = useContext(context);
+  
+  const text = CreateTeamText[language];
+
   const roles = ["Mid Tank", "Off Tank", "Support", "Damage", "Flank", "Flex"];
 
   useEffect(() => {
     setIsEditing(true);
-  }, []);
+  }, [setIsEditing]);
 
   const saveLogo = async () => {
     if (!logoImg) return
@@ -99,29 +104,31 @@ function CreateTeam() {
   return (
     <div>
       <Header />
-      <div className="mt-5 bg-body" style={{ minHeight: "1500px" }}>
+      <div className='mt-5 bg-body' style={{ minHeight: '1500px' }}>
         <form
           onSubmit={submitTeam}
-          className="d-flex flex-column align-items-center container"
+          className='d-flex flex-column align-items-center container'
         >
           <ImageInput />
-          <section className="d-flex mb-3 container justify-content-around">
+          <section className='d-flex mb-3 container justify-content-around'>
             <TeamNameInput />
             <TeamTagInput />
           </section>
-          <hr className="border-top border-dark border-3 w-100" />
-          <PlayerInputs playerType="main" roles={roles} numberOfInputs={5} />
-          <hr className="border-top border-dark border-3 w-100" />
-          <PlayerInputs playerType="subs" roles={roles} numberOfInputs={3} />
-          <hr className="border-top border-dark border-3 w-100" />
-          <section className="d-flex container flex-column align-items-center mt-3">
+          <hr className='border-top border-dark border-3 w-100' />
+          <PlayerInputs playerType='main' roles={roles} numberOfInputs={5} />
+          <hr className='border-top border-dark border-3 w-100' />
+          <PlayerInputs playerType='subs' roles={roles} numberOfInputs={3} />
+          <hr className='border-top border-dark border-3 w-100' />
+          <section className='d-flex container flex-column align-items-center mt-3'>
             <IsRecruitingInput />
-            <div className="d-flex flex-row justify-content-around w-100 align-items-center mb-4">
+            <div className='d-flex flex-row justify-content-around w-100 align-items-center mb-4'>
               <AvailableVacancyInput />
               <RolesSelectInputs roles={roles} />
             </div>
           </section>
-          <button type="submit" className="btn btn-success btn-lg">Save</button>
+          <button type='submit' className='btn btn-success btn-lg'>
+            {text['save']}
+          </button>
         </form>
       </div>
     </div>

@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import PropTypes from 'prop-types'
 import Select from 'react-select';
 import { range } from 'lodash';
+import context from '../context/MyContext';
+import RecruitingFilterText from '../translations/components/RecruitingFilter.json';
 
 function RecruitingFilter({setTeams, teams}) {
   
+  const { language } = useContext(context);
   const [selectedVacancy, setSelectedVacancy] = useState(null);
   const [selectedRoles, setSelectedRoles] = useState([]);
+
+  const text = RecruitingFilterText[language];
 
   const VacancyOptions = range(1, 9).map((i) => ({
     label: i, value: i
@@ -51,14 +56,14 @@ function RecruitingFilter({setTeams, teams}) {
   }, [selectedRoles, selectedVacancy, setTeams, teams])
 
   return (
-    <section className="d-flex mt-5 align-items-center text-center">
-      <div className="w-50 mx-1">
-        <label htmlFor="days-select" className="fw-bold fs-4 mb-2">
-          Filter by number of vacancies
+    <section className='d-flex mt-5 align-items-center text-center'>
+      <div className='w-50 mx-1'>
+        <label htmlFor='days-select' className='fw-bold fs-4 mb-2'>
+          {text['vacancie-filter']}
         </label>
         <Select
-          className={"w-100"}
-          id="vacancy-select"
+          className={'w-100'}
+          id='vacancy-select'
           isClearable
           options={VacancyOptions}
           value={selectedVacancy}
@@ -67,13 +72,13 @@ function RecruitingFilter({setTeams, teams}) {
           }}
         />
       </div>
-      <div className="w-50 mx-1">
-        <label htmlFor="hours-select" className="fw-bold fs-4 mb-2">
-          Filter by Role
+      <div className='w-50 mx-1'>
+        <label htmlFor='hours-select' className='fw-bold fs-4 mb-2'>
+          {text['role-filter']}
         </label>
         <Select
-          className={"w-100"}
-          id="hours-select"
+          className={'w-100'}
+          id='hours-select'
           isMulti
           options={rolesOptions}
           value={selectedRoles}

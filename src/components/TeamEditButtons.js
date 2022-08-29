@@ -4,11 +4,15 @@ import context from '../context/MyContext';
 import { deleteScrimFromTeam } from '../supabase/utils/scrimTimeUtils';
 import { deleteTeam } from '../supabase/utils/teamUtils';
 import Modal from './Modal';
+import TeamEditButtonsText from '../translations/components/TeamEditButtons.json';
+import { deleteLogo } from '../supabase/utils/logoUtils';
 
 function TeamEditButtons() {
   const navigate = useNavigate();
   const { id } = useParams();
-  const { isEditing, setIsEditing, user, ownerId, setIsOwner, isOwner, teamName } = useContext(context); 
+  const { isEditing, setIsEditing, user, ownerId, setIsOwner, isOwner, teamName, language } = useContext(context); 
+
+  const text = TeamEditButtonsText[language];
 
   const [isOpenDelete, setIsOpenDelete] = useState(false);
   const [isOpenSave, setIsOpenSave] = useState(false);
@@ -29,70 +33,98 @@ function TeamEditButtons() {
 
   const handleDeleteButton = async () => {
     await deleteScrimFromTeam("paladins_teams_scrims", id);
+    await deleteLogo(ownerId, teamName)
     await deleteTeam("paladins_teams", id);
     navigate("/teams");
     window.location.reload();
   };
 
   const saveAndCancelButtons = (
-    <div className="d-flex justify-content-around w-50">
-          <button type="button" className="btn btn-lg btn-success" onClick={() => { setIsOpenSave(true) }}>
-            Save
-          </button>
-          <button
-            type="button"
-            className="btn btn-danger btn-lg"
-            onClick={handleCancelButton}
-          >
-            Cancel
-          </button>
-        </div>
+    <div className='d-flex justify-content-around w-50'>
+      <button
+        type='button'
+        className='btn btn-lg btn-success'
+        onClick={() => {
+          setIsOpenSave(true);
+        }}
+      >
+        {text['save']}
+      </button>
+      <button
+        type='button'
+        className='btn btn-danger btn-lg'
+        onClick={handleCancelButton}
+      >
+        {text['cancel']}
+      </button>
+    </div>
   );
 
   const editAndDeleteButtons = (
-    <div className="w-50 d-flex justify-content-around">
-          <button
-            type="button"
-            className="btn btn-primary btn-lg"
-            onClick={handleEditButton}
-          >
-            Edit
-          </button>
-          <button
-            type="button"
-            className="btn btn-danger btn-lg"
-            onClick={() => {setIsOpenDelete(true)}}
-          >
-            Delete
-          </button>
-        </div>
-  )
+    <div className='w-50 d-flex justify-content-around'>
+      <button
+        type='button'
+        className='btn btn-primary btn-lg'
+        onClick={handleEditButton}
+      >
+        {text['edit']}
+      </button>
+      <button
+        type='button'
+        className='btn btn-danger btn-lg'
+        onClick={() => {
+          setIsOpenDelete(true);
+        }}
+      >
+        {text['delete']}
+      </button>
+    </div>
+  );
 
   const modalDeleteHeader = (
-    <div>Do you want to delete the team {teamName}?</div>
+    <div>
+      {text['delete-confirmation']} {teamName}?
+    </div>
   );
 
   const modalDeleteCotent = (
-    <div className="d-flex justify-content-around w-100">
-      <button type="button" className="btn btn-success" onClick={handleDeleteButton}>
-        Confirm
+    <div className='d-flex justify-content-around w-100'>
+      <button
+        type='button'
+        className='btn btn-success'
+        onClick={handleDeleteButton}
+      >
+        {text['confirm']}
       </button>
-      <button type="button" className="btn btn-danger" onClick={() => {setIsOpenDelete(false)}}>
-        Cancel
+      <button
+        type='button'
+        className='btn btn-danger'
+        onClick={() => {
+          setIsOpenDelete(false);
+        }}
+      >
+        {text['cancel']}
       </button>
     </div>
   );
 
   const modalSaveHeader = (
     <div>
-      <strong>Note:</strong> The team logo change may take up to a few minutes
-      to take effect
+      <strong>{text['note']}</strong> {text['logo-alert']}
     </div>
   );
 
   const modalSaveContent = (
-    <button type="submit" className='btn btn-success' onClick={()=> { setIsOpenSave(false) }}>Ok</button>
-  )
+    <button
+      type='submit'
+      className='btn btn-success'
+      onClick={() => {
+        setIsOpenSave(false);
+      }}
+    >
+      {text['ok']}
+    </button>
+  );
 
   return (
     <section className="container d-flex justify-content-around align-items-start">

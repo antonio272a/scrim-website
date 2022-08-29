@@ -4,11 +4,14 @@ import defaultAvatar from '../images/default-avatar.png';
 import { slide as Menu } from 'react-burger-menu';
 import './css/burgerMenu.css'
 import { Link } from 'react-router-dom';
+import HeaderText from '../translations/components/Header.json';
 
 function Header() {
-  const {supabase, user} = useContext(context)
+  const {supabase, user, language} = useContext(context)
   const [userImage, setUserImage] = useState();
   
+  const text = HeaderText[language];
+
   const userId = user ? user.id : '';
 
   useEffect(() => {
@@ -34,23 +37,26 @@ function Header() {
   }
 
   return (
-    <header className="header d-flex justify-content-around align-items-center pt-3">
+    <header className='header d-flex justify-content-around align-items-center pt-3'>
       <Menu noOverlay onStateChange={menuHandler}>
-        <div className="d-flex flex-column">
-          <Link className="btn btn-primary my-2" to="/teams">
-            Teams
+        <div className='d-flex flex-column'>
+          <Link className='btn btn-primary my-2' to='/home'>
+            {text['home']}
           </Link>
-          <Link className="btn btn-primary my-2" to="/scrims">
-            Scrims
+          <Link className='btn btn-primary my-2' to='/teams'>
+            {text['teams']}
           </Link>
-          <Link className="btn btn-primary my-2" to="/recruit">
-            Find Teams
+          <Link className='btn btn-primary my-2' to='/scrims'>
+            {text['scrims']}
           </Link>
-          <Link className="btn btn-primary my-2" to={`/user-teams`}>
-            Your Teams
+          <Link className='btn btn-primary my-2' to='/recruit'>
+            {text['find-teams']}
           </Link>
-          <Link className="btn btn-primary my-2" to={`/profile/${userId}`}>
-            Profile
+          <Link className='btn btn-primary my-2' to={`/user-teams`}>
+            {text['your-teams']}
+          </Link>
+          <Link className='btn btn-primary my-2' to={`/profile/${userId}`}>
+            {text['profile']}
           </Link>
         </div>
       </Menu>
@@ -58,13 +64,13 @@ function Header() {
       <div>
         <img
           src={userImage || defaultAvatar}
-          alt="user avatar"
-          className="img-fluid img-thumbnail rounded-circle"
-          style={{ width: "70px" }}
+          alt='user avatar'
+          className='img-fluid img-thumbnail rounded-circle'
+          style={{ width: '70px' }}
         />
       </div>
-      <button className="btn btn-danger" type="button" onClick={signOut}>
-        SignOut
+      <button className='btn btn-danger' type='button' onClick={signOut}>
+        {text['signout']}
       </button>
     </header>
   );

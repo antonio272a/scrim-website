@@ -1,0 +1,35 @@
+{
+  "pt-br": {
+    "save": "Salvar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Deletar",
+    "delete-confirmation": "Você gostaria de deletar o time ",
+    "confirm": "Confirmar",
+    "note": "Obs.:",
+    "logo-alert": "A mudança de logo da equipe pode demorar alguns minutos até surtir efeito",
+    "ok": "Ok"
+  },
+  "en-us": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "edit": "Edit",
+    "delete": "Delete",
+    "delete-confirmation": "Do you want to delete the team ",
+    "confirm": "Confirm",
+    "note": "Note:",
+    "logo-alert": "The team logo change may take up to a few minutes to take effect",
+    "ok": "Ok"
+  },
+  "es": {
+    "save": "Guardar",
+    "cancel": "Cancelar",
+    "edit": "Editar",
+    "delete": "Borrar",
+    "delete-confirmation": "¿Te gustaría eliminar el equipo ",
+    "confirm": "Confirmar",
+    "note": "Nota:",
+    "logo-alert": "El cambio del logotipo del equipo puede tardar unos minutos en surtir efecto",
+    "ok": "Ok"
+  }
+}

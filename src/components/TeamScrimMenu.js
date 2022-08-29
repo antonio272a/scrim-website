@@ -1,12 +1,16 @@
 import React, { useContext, useEffect, useState } from 'react'
-import _, { capitalize } from "lodash";
+import _ from "lodash";
 import PropTypes from 'prop-types';
 import context from '../context/MyContext';
 import { getScrimFromTeam, upsertScrim } from '../supabase/utils/scrimTimeUtils';
+import TeamScrimMenuText from '../translations/components/TeamScrimMenu.json';
 
 function TeamScrimMenu({ teamId }) {
-  const { user } = useContext(context);
+  const { user, language } = useContext(context);
   const [selectedDay, setSelectedDay] = useState(0);
+
+  const text = TeamScrimMenuText[language];
+  const { days: daysText } = text;
 
   const days = [
     "monday",
@@ -134,11 +138,11 @@ function TeamScrimMenu({ teamId }) {
     <button
       className={`btn ${unselectedClass} mx-1 day-button btn-lg`}
       id={index}
-      type="button"
+      type='button'
       key={`button-${day}`}
       onClick={handleDayButton}
     >
-      {capitalize(day)}
+      {daysText[day]}
     </button>
   ));
 
@@ -148,7 +152,7 @@ function TeamScrimMenu({ teamId }) {
 
   return (
     <form className="mt-4 d-flex flex-column container align-items-center">
-      <h3 className='mb-3'>Time Zone: -3GMT</h3>
+      <h3 className='mb-3'>{text['timezone']}</h3>
       <section className="container d-flex justify-content-around w-50">
         {daysButtons}
       </section>
@@ -158,7 +162,7 @@ function TeamScrimMenu({ teamId }) {
         onClick={saveHours}
         className="btn btn-success mt-4 btn-lg"
       >
-        Save
+        {text['save']}
       </button>
     </form>
   );

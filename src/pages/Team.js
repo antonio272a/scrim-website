@@ -11,6 +11,7 @@ import TeamAvailableVacancys from '../components/teamPresentation/TeamAvailableV
 import TeamScrims from '../components/teamPresentation/TeamScrims';
 import TeamLogo from '../components/teamPresentation/TeamLogo';
 import { getUserById } from '../supabase/utils/userUtils';
+import TeamText from '../translations/pages/Team.json';
 
 function Team() {
   const { id } = useParams()
@@ -30,12 +31,13 @@ function Team() {
     setOwnerId,
     ownerId,
     setIsEditing,
+    language
   } = useContext(context);
 
   const [discordName, setDiscordName] = useState('');
-  const [discordId, setDiscordId] = useState('');
   const [ownerAvatar, setOwnerAvatar] = useState('');
 
+  const text = TeamText[language]; 
 
   const renderTeam = (team) => {
     const {
@@ -91,7 +93,6 @@ function Team() {
       if(!ownerId) return
       const { name, provider_id, avatar_url } = await getUserById(ownerId);
       setDiscordName(name);
-      setDiscordId(provider_id);
       setOwnerAvatar(avatar_url);
     };
     getUser();
@@ -106,9 +107,9 @@ function Team() {
   }, [ownerId, setIsOwner, user]);
 
   return (
-    <div style={{ minHeight: "2000px" }}>
+    <div style={{ minHeight: '2000px' }}>
       <Header />
-      <main className="d-flex flex-column">
+      <main className='d-flex flex-column'>
         <Contact
           discord={discordName}
           ownerId={ownerId}
@@ -116,18 +117,18 @@ function Team() {
         />
         <TeamLogo />
         {isOwner && (
-          <div className="mt-3 align-self-center">
-            <Link to={`/team/${id}/edit`} className="btn btn-primary">
-              Edit Team
+          <div className='mt-3 align-self-center'>
+            <Link to={`/team/${id}/edit`} className='btn btn-primary'>
+              {text['edit-team']}
             </Link>
           </div>
         )}
         <TeamName />
-        <hr className="w-100 border-top border-dark border-3" />
-        <TeamPlayers playerType="main" playerNumbers={5} />
-        <TeamPlayers playerType="subs" playerNumbers={3} />
+        <hr className='w-100 border-top border-dark border-3' />
+        <TeamPlayers playerType='main' playerNumbers={5} />
+        <TeamPlayers playerType='subs' playerNumbers={3} />
         <TeamAvailableVacancys />
-        <hr className="w-100 border-top border-dark border-3" />
+        <hr className='w-100 border-top border-dark border-3' />
         <TeamScrims />
       </main>
     </div>

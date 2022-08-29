@@ -1,5 +1,5 @@
 import React, { useContext, useEffect } from "react";
-import { Route, Routes, Redirect } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import CreateTeam from "./pages/CreateTeam";
 import TeamEdit from "./pages/TeamEdit";
@@ -13,6 +13,8 @@ import Recruiting from "./pages/Recruiting";
 import UserTeams from "./pages/UserTeams";
 import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
+import Index from "./pages/Index";
+import Home from "./pages/Home";
 
 function App() {
   const { session, setSession } = useContext(MyContext);
@@ -23,6 +25,10 @@ function App() {
       setSession(session);
     });
   }, [setSession])
+
+  useEffect(() => {
+    document.title = 'Scrims Website'
+  }, [])
 
   return (
     <div className="bg-body">
@@ -37,7 +43,8 @@ function App() {
           <Route path="/user-teams" element={<UserTeams />} />
           <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/not-found" element={<NotFound />} />
-          <Route path="/" element={<Teams />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Index />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       ) : (

@@ -18,6 +18,7 @@ function ContextProvider({ children }) {
   const [isOwner, setIsOwner] = useState(false);
   const [hasAvatar, setHasAvatar] = useState(false);
   const [ownerId, setOwnerId] = useState();
+  const [language, setLanguage] = useState('pt-br');
   const [playerInputs, setPlayerInputs] = useState({
     main: {
       name1: "",
@@ -76,7 +77,9 @@ function ContextProvider({ children }) {
     ownerId,
     setOwnerId,
     isOwner,
-    setIsOwner
+    setIsOwner,
+    language,
+    setLanguage
   };
   return <MyContext.Provider value={context}>{children}</MyContext.Provider>;
 }

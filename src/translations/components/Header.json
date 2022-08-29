@@ -1,0 +1,29 @@
+{
+  "pt-br": {
+    "home": "Home",
+    "teams": "Equipes",
+    "scrims": "Scrims",
+    "find-teams": "Encontrar Equipes",
+    "your-teams": "Suas Equipes",
+    "profile": "Perfil",
+    "signout": "Sair"
+  },
+  "en-us": {
+    "home": "Home",
+    "teams": "Teams",
+    "scrims": "Scrims",
+    "find-teams": "Find Teams",
+    "your-teams": "Your Teams",
+    "profile": "Profile",
+    "signout": "Sign Out"
+  },
+  "es": {
+    "home": "Home",
+    "teams": "Equipos",
+    "scrims": "Scrims",
+    "find-teams": "Encontrar Equipos",
+    "your-teams": "Tus Equipos",
+    "profile": "Perfil",
+    "signout": "Salir"
+  }
+}

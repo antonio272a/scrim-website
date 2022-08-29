@@ -1,20 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import Select from "react-select";
 import { range } from "lodash";
+import context from "../context/MyContext";
+import ScrimsFilterText from '../translations/components/ScrimsFilter.json';
 
 function ScrimsFilter({ setTeams, teams }) {
+  const { language } = useContext(context);
   const [selectedDays, setSelectedDays] = useState([]);
   const [selectedHours, setSelectedHours] = useState([]);
 
+  const text = ScrimsFilterText[language];
+  const { days } = text
+
   const daysSelectOptions = [
-    { label: "Monday", value: "monday" },
-    { label: "Tuesday", value: "tuesday" },
-    { label: "Wednesday", value: "wednesday" },
-    { label: "Thursday", value: "thursday" },
-    { label: "Friday", value: "friday" },
-    { label: "Saturday", value: "saturday" },
-    { label: "Sunday", value: "sunday" },
+    { label: days['monday'], value: 'monday' },
+    { label: days['tuesday'], value: 'tuesday' },
+    { label: days['wednesday'], value: 'wednesday' },
+    { label: days['thursday'], value: 'thursday' },
+    { label: days['friday'], value: 'friday' },
+    { label: days['saturday'], value: 'saturday' },
+    { label: days['sunday'], value: 'sunday' },
   ];
 
   const hoursSelectOptions = range(0, 24).map((hour) => ({
@@ -63,14 +69,14 @@ function ScrimsFilter({ setTeams, teams }) {
   }, [selectedDays, selectedHours, setTeams, teams]);
 
   return (
-    <section className="d-flex mt-5 align-items-center text-center">
-      <div className="w-50 mx-1">
-        <label htmlFor="days-select" className="fw-bold fs-4 mb-2">
-          Filter by day
+    <section className='d-flex mt-5 align-items-center text-center'>
+      <div className='w-50 mx-1'>
+        <label htmlFor='days-select' className='fw-bold fs-4 mb-2'>
+          {text['day-filter']}
         </label>
         <Select
-          className={"w-100"}
-          id="days-select"
+          className={'w-100'}
+          id='days-select'
           isMulti
           options={daysSelectOptions}
           value={selectedDays}
@@ -79,13 +85,13 @@ function ScrimsFilter({ setTeams, teams }) {
           }}
         />
       </div>
-      <div className="w-50 x-1">
-        <label htmlFor="hours-select" className="fw-bold fs-4 mb-2">
-          Filter by hour (Time Zone: -3GMT)
+      <div className='w-50 x-1'>
+        <label htmlFor='hours-select' className='fw-bold fs-4 mb-2'>
+          {text['hour-filter']}
         </label>
         <Select
-          className={"w-100"}
-          id="hours-select"
+          className={'w-100'}
+          id='hours-select'
           isMulti
           options={hoursSelectOptions}
           value={selectedHours}

@@ -7,17 +7,19 @@ import UserInfo from '../components/userPresentation/UserInfo';
 import UserTeams from '../components/userPresentation/UserTeams';
 import context from '../context/MyContext';
 import { getUserById, getUserContacts, upsertUserContacts } from '../supabase/utils/userUtils';
-
+import ProfileText from '../translations/pages/Profile.json';
 
 function Profile() {
   const { userId } = useParams();
-  const { user } = useContext(context);
+  const { user, language } = useContext(context);
   const [pagedUser, setPagedUser] = useState({})
   const [isUser, setIsUser] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [userContacts, setUserContacts] = useState([]);
   const [userContactsReference, setUserContactsReference] = useState([]);
   
+  const text = ProfileText[language];
+
   useEffect(() => {
     const getUser = async () => {
       const userData = await getUserById(userId);
@@ -69,7 +71,7 @@ function Profile() {
             onClick={() => setIsEditing(true)}
             className="btn btn-primary mt-4"
           >
-            Edit Contacts
+            {text['edit-contacts']}
           </button>
         )}
         <hr className="w-100 border-top border-dark border-3" />

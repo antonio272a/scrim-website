@@ -1,0 +1,14 @@
+{
+  "pt-br": {
+    "vacancie-filter": "Filtrar por número de vagas",
+    "role-filter": "Filtrar por função"
+  },
+  "en-us": {
+    "vacancie-filter": "Filter by number of vacancies",
+    "role-filter": "Filter by Role"
+  },
+  "es": {
+    "vacancie-filter": "Filtrar por número de vacantes",
+    "role-filter": "Filtrar por Rol"
+  }
+}

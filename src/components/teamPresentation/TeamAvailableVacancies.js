@@ -1,18 +1,21 @@
 import React, { useContext } from 'react'
 import context from '../../context/MyContext'
+import TeamAvailableVacanciesText from '../../translations/components/teamPresentation/TeamAvailableVacancies.json';
 
-function TeamAvailableVacancys() {
-  const { isRecruiting, availableVacancy, availableRoles } = useContext(context);
+function TeamAvailableVacancies() {
+  const { isRecruiting, availableVacancy, availableRoles, language } = useContext(context);
   
+  const text = TeamAvailableVacanciesText[language];
+
   const notRecruiting = (
-    <p className="fs-4 text-center">This team is currently not recruiting.</p>
+    <p className="fs-4 text-center">{text['not-recruiting']}</p>
   );
 
     const recruiting = (
       <div className="d-flex flex-column justify-content-center align-items-center">
-        <p className="fs-4">Available vacancies: {availableVacancy}</p>
+        <p className="fs-4">{text['available-vacancies']} {availableVacancy}</p>
         <div className="d-flex align-items-center align-center">
-          <div className="fs-3 me-3">Roles:</div>
+          <div className="fs-3 me-3">{text['roles']}</div>
           {availableRoles.length ? (
             availableRoles.map((role, index) => (
               <div
@@ -24,7 +27,7 @@ function TeamAvailableVacancys() {
             ))
           ) : (
             <div className="fs-5 border border-dark border-2 p-2 mx-2 rounded-pill">
-              Any
+              {text['any']}
             </div>
           )}
         </div>
@@ -38,4 +41,4 @@ function TeamAvailableVacancys() {
   )
 }
 
-export default TeamAvailableVacancys
+export default TeamAvailableVacancies

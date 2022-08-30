@@ -3,7 +3,7 @@ import context from '../../context/MyContext'
 import defaultLogo from '../../images/default-avatar.png'
 
 function TeamLogo() {
-  const {logoUrl} = useContext(context);
+  const { logoUrl } = useContext(context);
 
   return (
     <div className="align-self-center d-flex mt-3">

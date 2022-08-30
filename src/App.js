@@ -15,6 +15,7 @@ import Profile from "./pages/Profile";
 import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
 import Home from "./pages/Home";
+import Footer from "./components/Footer";
 
 function App() {
   const { session, setSession } = useContext(MyContext);
@@ -50,6 +51,7 @@ function App() {
       ) : (
         <Login />
       )}
+      <Footer />
     </div>
   );
 }

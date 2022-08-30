@@ -2,10 +2,12 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types';
 import Select from 'react-select';
 import context from '../../context/MyContext';
+import RolesSelectInputText from '../../translations/components/inputs/RolesSelectInput.json';
 
 function RolesSelectInputs({ roles }) {
-  
-  const {availableRoles, setAvailableRoles, availableVacancy, isEditing} = useContext(context);
+  const { availableRoles, setAvailableRoles, availableVacancy, isEditing, language } = useContext(context);
+
+  const text = RolesSelectInputText[language];
 
   const multiSelectOption = roles.map((role) => ({
     value: role,
@@ -13,11 +15,11 @@ function RolesSelectInputs({ roles }) {
   }));
 
   return (
-    <div className="d-flex flex-column align-items-center">
-      <label htmlFor="roles-select">Available Roles</label>
+    <div className='d-flex flex-column align-items-center'>
+      <label htmlFor='roles-select'>{text['available-roles']}</label>
       <Select
-        id="roles-select"
-        width="100px"
+        id='roles-select'
+        width='100px'
         isMulti
         options={multiSelectOption}
         value={availableRoles}

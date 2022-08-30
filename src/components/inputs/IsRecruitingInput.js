@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import context from '../../context/MyContext';
+import isRecruitingInputText from '../../translations/components/inputs/IsRecruitingInput.json';
 
 function IsRecruitingInput() {
   const { 
@@ -7,14 +8,17 @@ function IsRecruitingInput() {
     setIsRecruiting, 
     isEditing, 
     setAvailableRoles, 
-    setAvailableVacancy 
+    setAvailableVacancy,
+    language
   } = useContext(context);
   
+  const text = isRecruitingInputText[language];
+
   return (
-    <div className="form-check">
+    <div className='form-check'>
       <input
-        type="checkbox"
-        className="form-check-input mb-4"
+        type='checkbox'
+        className='form-check-input mb-4'
         checked={isRecruiting}
         disabled={!isEditing}
         onChange={({ target: { checked } }) => {
@@ -25,7 +29,7 @@ function IsRecruitingInput() {
           }
         }}
       />
-      <label className="form-check-label">Recruiting?</label>
+      <label className='form-check-label'>{text['recruiting']}</label>
     </div>
   );
 }

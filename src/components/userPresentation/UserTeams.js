@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { getUserTeams } from '../../supabase/utils/teamUtils';
 import { useParams } from 'react-router-dom';
 import TeamCard from '../TeamCard';
+import context from '../../context/MyContext';
+import UserTeamsText from '../../translations/components/userPresentation/UserTeams.json';
 
 function UserTeams() {
   const { userId } = useParams();
   const [teams, setTeams] = useState([]);
+  const { language } = useContext(context);
+
+  const text = UserTeamsText[language];
 
   useEffect(() => {
     const getTeams = async () => {
@@ -17,10 +22,10 @@ function UserTeams() {
   }, [userId]);
 
   return (
-    <section className="mt-3 d-flex flex-column align-items-center">
-      <div className="fs-4">User Teams</div>
-      
-      <div className="d-flex flex-wrap align-items-center justify-content-around">
+    <section className='mt-3 d-flex flex-column align-items-center'>
+      <div className='fs-4'>{text['user-teams']}</div>
+
+      <div className='d-flex flex-wrap align-items-center justify-content-around'>
         {teams.map(({ id, name }) => (
           <TeamCard
             key={`team-${id}`}

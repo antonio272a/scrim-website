@@ -1,0 +1,14 @@
+{
+  "pt-br": {
+    "team-name": "Nome da Equipe",
+    "already-taken": "Nome não disponível!"
+  },
+  "en-us": {
+    "team-name": "Team Name",
+    "already-taken": "Name already taken!"
+  },
+  "es": {
+    "team-name": "Nombre del Equipo",
+    "already-taken": "¡Nombre ya en uso!"
+  }
+}

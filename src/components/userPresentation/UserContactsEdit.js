@@ -1,14 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { capitalize, lowerCase } from "lodash";
-import { useParams } from "react-router-dom";
 import Select from "react-select";
+import context from '../../context/MyContext';
+import UserContactsEditText from '../../translations/components/userPresentation/userContactsEdit.json';
 
 function UserContactsEdit({ userContacts, setUserContacts, finishEdit }) {
+  const { language } = useContext(context);
   const [providerField, setProviderField] = useState("");
   const [contactField, setContactField] = useState("");
   const [isAddingContact, setIsAddingContact] = useState("");
-  const { userId } = useParams();
+
+  const text = UserContactsEditText[language];
 
   const providerOptions = [
     { label: "Discord", value: "Discord" },
@@ -53,33 +56,33 @@ function UserContactsEdit({ userContacts, setUserContacts, finishEdit }) {
   };
 
   return (
-    <section className="align-self-center w-75 justify-content center d-flex flex-column align-items-center">
-      <div className="fs-2 fw-bolder text-center my-2">Contatos:</div>
-      <div className="d-flex flex-column w-100">
+    <section className='align-self-center w-75 justify-content center d-flex flex-column align-items-center'>
+      <div className='fs-2 fw-bolder text-center my-2'>{text['contacts']}</div>
+      <div className='d-flex flex-column w-100'>
         {userContacts.map(({ provider, contact }, index) => (
           <div
             id={`contact-${index}`}
             key={`contact-${provider}-${index}`}
-            className="d-flex justify-content-between w-100 align-items-center mb-4 contactContainer"
+            className='d-flex justify-content-between w-100 align-items-center mb-4 contactContainer'
           >
             <div>
-              <span className="fs-3 fw-bold provider">
+              <span className='fs-3 fw-bold provider'>
                 {capitalize(provider)}
               </span>
-              <span className="fs-3 fw-bold me-1">: </span>
-              <span className="fs-4 contact">{contact}</span>
+              <span className='fs-3 fw-bold me-1'>: </span>
+              <span className='fs-4 contact'>{contact}</span>
             </div>
             <div>
               <button
-                type="button"
-                className="btn btn-primary me-2"
+                type='button'
+                className='btn btn-primary me-2'
                 onClick={handleEditButton}
               >
-                Edit
+                {text['edit']}
               </button>
               <button
-                type="button"
-                className="btn btn-danger"
+                type='button'
+                className='btn btn-danger'
                 onClick={handleDeleteButton}
               >
                 X
@@ -89,40 +92,40 @@ function UserContactsEdit({ userContacts, setUserContacts, finishEdit }) {
         ))}
       </div>
       {isAddingContact ? (
-        <div className="d-flex align-items-center">
-          <div className="d-flex align-items-center mx-4">
+        <div className='d-flex align-items-center'>
+          <div className='d-flex align-items-center mx-4'>
             <Select
-              id="provider-select"
-              width="100px"
+              id='provider-select'
+              width='100px'
               options={providerOptions}
               value={providerField}
               onChange={(provider) => {
                 setProviderField(provider);
               }}
-              placeholder="Provider"
+              placeholder={text['provider']}
             />
-            <div className="form-floating mx-5">
+            <div className='form-floating mx-5'>
               <input
-                id="new-contact"
-                className="form-control"
-                type="text"
+                id='new-contact'
+                className='form-control'
+                type='text'
                 value={contactField}
                 onChange={({ target: { value } }) => setContactField(value)}
               />
-              <label htmlFor="new-contact">Contact</label>
+              <label htmlFor='new-contact'>{text['contact']}</label>
             </div>
           </div>
-          <div className="justify-self-end">
+          <div className='justify-self-end'>
             <button
-              type="button"
-              className="btn btn-success mx-2"
+              type='button'
+              className='btn btn-success mx-2'
               onClick={saveContact}
             >
-              Save
+              {text['save']}
             </button>
             <button
-              type="button"
-              className="btn btn-danger mx-2"
+              type='button'
+              className='btn btn-danger mx-2'
               onClick={cancelAdd}
             >
               X
@@ -130,30 +133,30 @@ function UserContactsEdit({ userContacts, setUserContacts, finishEdit }) {
           </div>
         </div>
       ) : (
-        <div className="d-flex flex-column align-items-center justify-content-center">
+        <div className='d-flex flex-column align-items-center justify-content-center'>
           <button
-            type="button"
+            type='button'
             onClick={() => {
               setIsAddingContact(true);
             }}
-            className="btn btn-primary"
+            className='btn btn-primary'
           >
-            Add Contact
+            {text['add']}
           </button>
-          <div className="m-4">
+          <div className='m-4'>
             <button
-              type="button"
-              className="btn btn-success mx-2"
+              type='button'
+              className='btn btn-success mx-2'
               onClick={() => finishEdit(false)}
             >
-              Save changes
+              {text['save-changes']}
             </button>
             <button
-              type="button"
-              className="btn btn-danger mx-2"
+              type='button'
+              className='btn btn-danger mx-2'
               onClick={() => finishEdit(true)}
             >
-              Cancel
+              {text['cancel']}
             </button>
           </div>
         </div>

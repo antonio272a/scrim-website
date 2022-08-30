@@ -1,0 +1,32 @@
+{
+  "pt-br": {
+    "contacts": "Contatos:",
+    "edit": "Editar",
+    "add": "Adicionar Contato",
+    "save": "Salvar",
+    "save-changes": "Salvar alterações",
+    "cancel": "Cancelar",
+    "contact": "Contato",
+    "provider": "Provedor"
+  },
+  "en-us": {
+    "contacts": "Contacts:",
+    "edit": "Edit",
+    "add": "Add Contact",
+    "save": "Save",
+    "save-changes": "Save Changes",
+    "cancel": "Cancel",
+    "contact": "Contact",
+    "provider": "Provider"
+  },
+  "es": {
+    "contacts": "Contactos:",
+    "edit": "Editar",
+    "add": "Agregar contacto",
+    "save": "Guardar",
+    "save-changes": "Guardar ediciones",
+    "cancel": "Cancelar",
+    "contact": "Contacto",
+    "provider": "Proveedor"
+  }
+}

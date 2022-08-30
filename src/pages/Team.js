@@ -7,7 +7,7 @@ import { getTeamLogo } from '../supabase/utils/logoUtils';
 import { getTeamById } from '../supabase/utils/teamUtils';
 import TeamName from '../components/teamPresentation/TeamName';
 import TeamPlayers from '../components/teamPresentation/TeamPlayers';
-import TeamAvailableVacancys from '../components/teamPresentation/TeamAvailableVacancys';
+import TeamAvailableVacancys from '../components/teamPresentation/TeamAvailableVacancies';
 import TeamScrims from '../components/teamPresentation/TeamScrims';
 import TeamLogo from '../components/teamPresentation/TeamLogo';
 import { getUserById } from '../supabase/utils/userUtils';
@@ -91,7 +91,7 @@ function Team() {
 
     const getUser = async () => {
       if(!ownerId) return
-      const { name, provider_id, avatar_url } = await getUserById(ownerId);
+      const { name, avatar_url } = await getUserById(ownerId);
       setDiscordName(name);
       setOwnerAvatar(avatar_url);
     };

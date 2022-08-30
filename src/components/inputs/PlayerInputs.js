@@ -1,12 +1,15 @@
 import React, { useContext } from 'react'
-  import _ from 'lodash';
+import _ from 'lodash';
 import context from '../../context/MyContext';
 import PropTypes from 'prop-types';
+import PlayerInputsText from '../../translations/components/inputs/PlayerInputs.json';
 
 function PlayerInputs({ numberOfInputs, playerType, roles }) {
-  const inputs = _.range(1, numberOfInputs + 1)
+  const { playerInputs, setPlayerInputs, isEditing, language } = useContext(context);
+  
+  const text = PlayerInputsText[language];
 
-  const { playerInputs, setPlayerInputs, isEditing } = useContext(context);
+  const inputs = _.range(1, numberOfInputs + 1)
 
   const playerInputChange = ({ target: {id, value} }) => {
     const key = id.slice(playerType.length).toLowerCase();
@@ -34,7 +37,7 @@ function PlayerInputs({ numberOfInputs, playerType, roles }) {
               disabled={!isEditing}
             />
             <label htmlFor={`${playerType}Name${playerNumber}`}>
-              Player {playerNumber}
+              {text['player']} {playerNumber}
             </label>
           </div>
           <div>
@@ -46,7 +49,7 @@ function PlayerInputs({ numberOfInputs, playerType, roles }) {
               disabled={!isEditing}
             >
               <option value="" selected>
-                Player Role
+                {text['role']}
               </option>
               {roles.map((role, index) => (
                 <option key={`${playerType}-role-${index}`} value={role}>

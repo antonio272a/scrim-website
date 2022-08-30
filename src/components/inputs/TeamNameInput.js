@@ -1,34 +1,37 @@
 import React, { useContext } from 'react'
 import context from '../../context/MyContext';
+import TeamNameInputText from '../../translations/components/inputs/TeamNameInput.json';
 
 function TeamNameInput () {
-  const { teamName, setTeamName, isEditing } = useContext(context);
-  
+  const { teamName, setTeamName, isEditing, language } = useContext(context);
+
+  const text = TeamNameInputText[language];
+
   const teamNameInputChange = ({ target: { value } }) => {
     setTeamName(value);
   };
 
   return (
-    <div className="d-flex flex-column">
-      <div className="form-floating mb-3">
+    <div className='d-flex flex-column'>
+      <div className='form-floating mb-3'>
         <input
-          type="text"
-          id="team-name"
-          className="form-control"
+          type='text'
+          id='team-name'
+          className='form-control'
           maxLength={25}
           value={teamName}
           onChange={teamNameInputChange}
           disabled={!isEditing}
           required
         />
-        <label htmlFor="team-name">Team Name</label>
+        <label htmlFor='team-name'>{text['team-name']}</label>
       </div>
       <span
-        id="name-duplicate-error"
-        className="invalid-feedback"
-        style={{ display: "none" }}
+        id='name-duplicate-error'
+        className='invalid-feedback'
+        style={{ display: 'none' }}
       >
-        Name already taken!
+        {text['already-taken']}
       </span>
     </div>
   );

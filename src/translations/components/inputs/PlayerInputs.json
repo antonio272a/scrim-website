@@ -1,0 +1,14 @@
+{
+  "pt-br": {
+    "player": "Jogador",
+    "role": "Função do Jogador"
+  },
+  "en-us": {
+    "player": "Player",
+    "role": "Player Role"
+  },
+  "es": {
+    "player": "Jugador",
+    "role": "Role del Jugador"
+  }
+}

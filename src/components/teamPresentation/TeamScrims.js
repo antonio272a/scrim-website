@@ -1,23 +1,27 @@
-import { capitalize, range } from 'lodash';
+import { range } from 'lodash';
 import React, { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
 import context from '../../context/MyContext';
 import { getScrimFromTeam } from '../../supabase/utils/scrimTimeUtils';
+import TeamScrimText from '../../translations/components/teamPresentation/TeamScrim.json';
 
 function TeamScrims() {
-  const { user } = useContext(context);
+  const { user, language } = useContext(context);
   const { id } = useParams();
+  
+  const text = TeamScrimText[language];
+  const { days: daysText } = text;
   
   const unselectedClass = "btn-outline-primary";
   const selectedClass = "btn-primary";
   const days = [
-     "monday",
-     "tuesday",
-     "wednesday",
-     "thursday",
-     "friday",
-     "saturday",
-     "sunday",
+    "monday",
+    "tuesday",
+    "wednesday",
+    "thursday",
+    "friday",
+    "saturday",
+    "sunday",
   ];
   const times = range(0, 24);
 
@@ -93,7 +97,7 @@ function TeamScrims() {
       key={`button-${day}`}
       onClick={handleDayButton}
     >
-      {capitalize(day)}
+      {daysText[day]}
     </button>
   ));
 
@@ -119,8 +123,8 @@ function TeamScrims() {
 
   return (
     <section className="my-3 d-flex flex-column align-items-center container">
-      <div className="mb-4 fs-3">Scrim hours:</div>
-      <h5 className="mb-3">Time Zone: -3GMT</h5>
+      <div className="mb-4 fs-3">{text['scrim-hours']}</div>
+      <h5 className="mb-3">{text['timezone']}</h5>
       <div className="d-flex justify-content-center">{daysButtons}</div>
       {daysAvailableTimes[selectedDay]}
     </section>

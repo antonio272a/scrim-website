@@ -1,0 +1,14 @@
+{
+  "pt-br": {
+    "team-tag": "Tag da Equipe",
+    "already-taken": "Tag não disponível!"
+  },
+  "en-us": {
+    "team-tag": "Team Tag",
+    "already-taken": "Tag already taken!"
+  },
+  "es": {
+    "team-tag": "Tag del Equipo",
+    "already-taken": "¡Tag ya en uso!"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "pt-br": {
+    "not-recruiting": "Essa equipe não está recrutando atualmente.",
+    "available-vacancies": "Vagas disponíveis:",
+    "roles": "Funções:",
+    "any": "Qualquer"
+  },
+  "en-us": {
+    "not-recruiting": "This team is currently not recruiting.",
+    "available-vacancies": "Available vacancies::",
+    "roles": "Roles:",
+    "any": "Any"
+  },
+  "es": {
+    "not-recruiting": "Este equipo no está reclutando actualmente.",
+    "available-vacancies": "Vacantes disponibles:",
+    "roles": "Roles:",
+    "any": "Cualquiera"
+  }
+}

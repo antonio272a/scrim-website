@@ -32,6 +32,7 @@ export const getTeamLogo = async (ownerId, teamName) => {
     .download(`${ownerId}/${teamName}.png`);
   const { data } = result;
   if (!data) return;
+  console.log(data);
   const { data: { publicURL } } = supabase.storage
     .from("team-logos")
     .getPublicUrl(`${ownerId}/${teamName}.png`);

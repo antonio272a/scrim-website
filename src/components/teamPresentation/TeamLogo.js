@@ -11,7 +11,7 @@ function TeamLogo() {
         className="img-fluid img-thumbnail align-self-center rounded"
         src={logoUrl || defaultLogo}
         alt="Team Logo"
-        style={{ maxWidth: "100px" }}
+        style={{ width: "100px", height: "100px" }}
       />
     </div>
   );

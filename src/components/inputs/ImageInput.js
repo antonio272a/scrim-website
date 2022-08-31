@@ -54,7 +54,7 @@ function ImageInput() {
               <img width="10px" src={trashIcon} alt="Delete Logo" />
             </button>
           )}
-          <img src={logoUrl || deafultImage} alt="" width="100px" />
+          <img src={logoUrl || deafultImage} alt="" width="100px" height="100px" />
         </div>
       </label>
       <input

@@ -6,9 +6,8 @@ import defaultLogo from '../images/default-avatar.png';
 import './css/teamCard.css';
 
 function TeamCard({ teamId, teamName, ownerId, isLink }) {
-  
   const [logoUrl, setLogoUrl] = useState('');
-  console.log(logoUrl);
+  
   useEffect(() => {
     const getLogo = async () => {
       const url = await getTeamLogo(ownerId, teamName);

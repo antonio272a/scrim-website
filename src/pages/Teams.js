@@ -28,7 +28,7 @@ function Teams() {
           align-items-start align-self-center`}
       >
         {teams.map(({ id, name, owner_id }) => (
-          <TeamCard teamId={id} teamName={name} ownerId={owner_id} />
+          <TeamCard key={id} teamId={id} teamName={name} ownerId={owner_id} />
         ))}
       </section>
     </div>

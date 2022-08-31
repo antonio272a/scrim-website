@@ -46,7 +46,13 @@ function Home() {
           <h3>{text['suggestions-title']}</h3>
           <p>
             {text['suggestions-text']}
-            <a href='https://discord.gg/r3q59gtQmYhttps://discord.gg/r3q59gtQmY'>Discord</a>
+            <a
+              href='https://discord.gg/r3q59gtQmYhttps://discord.gg/r3q59gtQmY'
+              target='_blank'
+              rel='noreferrer'
+            >
+              Discord
+            </a>
           </p>
         </section>
       </main>

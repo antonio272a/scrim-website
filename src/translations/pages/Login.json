@@ -1,0 +1,17 @@
+{
+  "pt-br": {
+    "title": "Scrims Website",
+    "main-text": "Este é um website criado com a intenção de facilitar os times da comunidade de Paladins a marcar scrims, além de também facilitar o contato dos times com os agentes livres para montar os times.",
+    "suggestions-text": "Por enquanto o Login na plataforma é feito somente pelo Discord e o único jogo disponível para criação dos times é o Paladins, temos a intenção de expandir para outros jogos e ter mais opções de Login, porém para isso precisamos do seu feedback, então se tiver sugestões de outros jogos ou features, dirija elas para nosso "
+  },
+  "en-us": {
+    "title": "Scrims Website",
+    "main-text": "This is a website created with the intention of making it easier for teams in the Paladins community to schedule scrims, as well as making it easier for teams to contact free agents to assemble teams.",
+    "suggestions-text": "For now, Login on the platform is only done through Discord and the only game available for team creation is Paladins, we intend to expand to other games and have more Login options, but for that we need your feedback, so if you have suggestions for other games or features, direct them to our "
+  },
+  "es": {
+    "title": "Scrims Website",
+    "main-text": "Este es un sitio web creado con la intención de facilitar que los equipos de la comunidad de Paladins anoten scrims, así como facilitar que los equipos se comuniquen con agentes libres para armar equipos.",
+    "suggestions-text": "Por ahora, el inicio de sesión en la plataforma solo se realiza a través de Discord y el único juego disponible para la creación de equipos es Paladins, tenemos la intención de expandirnos a otros juegos y tener más opciones de inicio de sesión, pero para eso necesitamos sus comentarios, así que si tiene sugerencias para otros juegos o características, diríjalos a nuestro "
+  }
+}

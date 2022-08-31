@@ -50,8 +50,8 @@ function App() {
         </Routes>
       ) : (
         <Login />
-      )}
-      <Footer />
+        )}
+        <Footer />
     </div>
   );
 }

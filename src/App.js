@@ -16,6 +16,8 @@ import NotFound from "./pages/NotFound";
 import Index from "./pages/Index";
 import Home from "./pages/Home";
 import Footer from "./components/Footer";
+import System from "./pages/System";
+import Riot from "./pages/Riot";
 
 function App() {
   const { session, setSession } = useContext(MyContext);
@@ -30,10 +32,10 @@ function App() {
   useEffect(() => {
     document.title = 'Scrims Website'
   }, [])
-
+  console.log(window.location.href.endsWith('riot.txt'));
   return (
     <div className="bg-body">
-      {session ? (
+      {session || window.location.href.endsWith('riot.txt') ? (
         <Routes>
           <Route path="/team/:id/edit" element={<TeamEdit />} />
           <Route path="/team/:id" element={<Team />} />
@@ -44,7 +46,9 @@ function App() {
           <Route path="/user-teams" element={<UserTeams />} />
           <Route path="/profile/:userId" element={<Profile />} />
           <Route path="/not-found" element={<NotFound />} />
+          <Route path="/system" element={<System />} />
           <Route path="/home" element={<Home />} />
+          <Route path="/riot.txt" element={<Riot />} />
           <Route path="/" element={<Index />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
